@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Editer le potin n°<%= id %></title>
+  </head>
+  <body>
+    <h1>Edite le potin n°<%= id %>!</h1>
+    <% if !gossip_hash['gossip'].nil? %>
+      <p>Modifie ton potin via le formulaire ci-dessous</p>
+      <form action='' method='POST'>
+        <input type='hidden' name='index' value=<%= gossip_hash['index'] %>><br/>
+        Saisis ici le nouveau nom : <input type='text' name='gossip_author' value=<%= gossip_hash['gossip'].author.gsub(" ", '&nbsp') %>><br/>
+        Saisis ici la nouvelle version du potin : <input type='text' name='gossip_content' value=<%= gossip_hash['gossip'].content.gsub(" ", '&nbsp') %>><br/>
+        <input type='submit'/>
+      </form>
+    <% else %>
+      <p>Aucun potin de n°<%= id %> n'existe dans la base!</p>
+    <% end %>
+  </body>
+</html>

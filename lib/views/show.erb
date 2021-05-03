@@ -15,6 +15,8 @@
       <% if !gossip_hash['gossip'].nil? %>
         <p class="author">Son auteur : <em><%= gossip_hash['gossip'].author %></em></p>
         <p class="content">Le contenu du potin : <%= gossip_hash['gossip'].content %></p>
+        <br/>
+        <p><a href="edit/">Editer le potin n°<%= id %></a></p>
       <% else %>
         <p>Aucun potin de n°<%= id %> n'existe dans la base!</p>
       <% end %>
