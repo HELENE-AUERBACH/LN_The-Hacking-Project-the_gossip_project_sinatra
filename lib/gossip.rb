@@ -40,6 +40,25 @@ class Gossip
     return all_gossips
   end
 
+  def self.find_gossip_with_index(file_name, id)
+    result = { "gossip" => nil, "index" => -1 }
+    puts "id : #{id}"
+    if Gossip.check_file_name?(file_name) # On vérifie le nom du fichier à consulter via une méthode check_file_name? (cf. plus bas)
+      CSV.foreach("./db/#{PREFIX}#{file_name}").with_index do |row, row_number| # le chemin relatif est donné par rapport au répertoire d'où est lancée l'application controller.rb
+        puts "row_number : #{row_number}"
+        if (id != -1 && row_number + 1 == id) # on considère que l'utilsateur dénombre les potins dans la liste complète à partir du numéro/de l'id 1;
+                                              # or, row_number "démarre" à 0!!!
+          result = { "gossip" => Gossip.new(row[0], row[1]), "index" => row_number }
+          puts "result : #{result}"
+          break
+        end
+      end
+    else
+      puts "Impossible de consulter un fichier de nom \"./db/#{PREFIX}#{file_name}\"."
+    end
+    return result
+  end
+
   private
 
   def self.check_file_name?(file_name)

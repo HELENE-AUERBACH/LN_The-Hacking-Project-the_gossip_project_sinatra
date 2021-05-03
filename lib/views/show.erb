@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Un potin de THP">
+    <meta name="author" content="LN A.">
+    <link rel="stylesheet" type="text/css" href="/css/gossip.css">
+    <title>Page du potin n°<%= id %></title>
+  </head>
+  <body>
+    <h1>Voici la page du potin n°<%= id %></h1>
+    <div>
+      <% if !gossip_hash['gossip'].nil? %>
+        <p class="author">Son auteur : <em><%= gossip_hash['gossip'].author %></em></p>
+        <p class="content">Le contenu du potin : <%= gossip_hash['gossip'].content %></p>
+      <% else %>
+        <p>Aucun potin de n°<%= id %> n'existe dans la base!</p>
+      <% end %>
+    </div>
+    <div>
+      <p><a href="/">Retour à l'accueil</a></p>
+    </div>
+  </body>
+</html>

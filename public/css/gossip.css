@@ -1,0 +1,11 @@
+.content {
+    font-style: italic;
+    border-radius: 10px !important;
+    text-indent: 12px !important;
+    width: auto !important;
+    padding: 0px 8px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font: bold 11px / 20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important;
+    color: rgb(255, 255, 255) !important;
+    }

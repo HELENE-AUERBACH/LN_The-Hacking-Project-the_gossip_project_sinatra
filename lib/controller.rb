@@ -4,12 +4,25 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+
   get '/gossips/all/' do
     erb :all_gossips, locals: {gossips: Gossip.all("gossip.csv")}
   end
+
+  get '/gossips/:id/' do
+    if !params['id'].nil? && !params['id'].strip.empty? && params['id'] != "-1" && params['id'].to_i > 0
+      # on considère que l'utilisateur compte les potins à partir du numéro 1
+      puts "Voici le numéro du potin que tu veux : #{params['id']}!"
+      erb :show, locals: {gossip_hash: Gossip.find_gossip_with_index("gossip.csv", params['id'].to_i), id: params['id']}
+    else
+      puts "Tu n'as sélectionné aucun numéro de potin."
+    end
+  end
+
   get '/gossips/new/' do
     erb :new_gossip
   end
+
   post '/gossips/new/' do
     puts "Ce programme sauvegarde un potin en base (ce message est seulement affiché dans le terminal)."
     puts "Salut, je suis dans le serveur"
