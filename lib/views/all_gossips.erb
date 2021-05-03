@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Les potins de THP">
+    <meta name="author" content="LN A.">
+    <link rel="stylesheet" type="text/css" href="/css/all_gossips.css">
+    <title>Les potins à THP</title>
+  </head>
+  <body>
+    <div>
+      <table>
+        <caption>Voici la liste des potins qui circulent...</caption>
+        <thead>
+          <tr>
+            <th>Auteur</th>
+            <th>Contenu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% gossips.each do |gossip| %>
+            <tr>
+              <td><%= gossip.author %></td>
+              <td> <%= gossip.content %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </div>
+    <div>
+      <p><a href="/">Retour à l'accueil</a></p>
+    </div>
+  </body>
+</html>
