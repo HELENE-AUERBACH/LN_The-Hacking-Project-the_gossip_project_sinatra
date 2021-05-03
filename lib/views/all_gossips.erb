@@ -17,13 +17,17 @@
           <tr>
             <th>Auteur</th>
             <th>Contenu</th>
+            <th>Page</th>
           </tr>
         </thead>
         <tbody>
-          <% gossips.each do |gossip| %>
+          <% gossips.each_with_index do |gossip, index| %>
             <tr>
               <td><%= gossip.author %></td>
-              <td> <%= gossip.content %></td>
+              <td><%= gossip.content %></td>
+              <% id = index + 1 %>
+              <% link = "<a href=\"../../gossips/#{id}/\">Potin n°#{id}</a>" %>
+              <td><%= link %></td>
             </tr>
           <% end %>
         </tbody>
